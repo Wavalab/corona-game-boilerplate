@@ -11,7 +11,7 @@ local C = {}
 -- Constructor
 --
 
-local C.new = function()
+C.new = function()
 
   local self = {} -- Or set to a extendable constructor (even, a display object!)
 
