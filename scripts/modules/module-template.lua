@@ -1,46 +1,20 @@
---
--- Utility Module
---
-
--- require modules here
+-- load dependencies here
 local M = {}
 
 
 
---
--- Private variables
---
-
-local foo
-
-
-
---
--- Private functions
---
-
-local moo = function()
-  print("I am a private function!")
+-- Private
+local foo = function()
+  return "foobar!"
 end
 
 
 
---
--- Public functions
---
-
+-- Public
 M.bar = function()
-  print("I am public function!")
-end
-
-M.baz = function()
-  print("I am public function too!")
+  print("I am public " .. foo())
 end
 
 
-
---
--- End
---
 
 return M
