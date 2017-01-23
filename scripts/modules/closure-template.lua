@@ -1,62 +1,34 @@
---
--- Closure Module
---
+local M = { new = function()
 
--- require statements here
-local C = {}
+  -- Construct and initialize instance
+  local ClosureInstance = {} -- feel free to rename to something more elegant
 
+  -- To extend a display object
+  -- local ClosureInstance = display.newCircle(0, 0, 0)
 
+  -- To extend a custom object
+  -- local ClosureInstance = require("parent-class-module").new()
 
---
--- Constructor
---
+  -- Public properties
+  ClosureInstance.publicVariable = nil
 
-C.new = function()
-
-  local self = {} -- Or set to a extendable constructor (even, a display object!)
-
-
-
-  --
   -- Private variables
-  --
+  local privateVariable
 
-  local foo = "foobar"
-
-
-
-  --
   -- Private functions
-  --
+  local function privateFunction() end
 
-  local privFn = function()
-    print("I am private!")
-  end
+  -- Public methods with access to `self` reference
+  function ClosureInstance:publicFunction() end
 
+  -- Override inherited methods
+  -- function ClosureInstance:inheritedMethod() end
 
+  -- Call super class methods
+  -- ClosureInstance.superInheritedMethod = ClosureInstance.inheritedMethod
+  -- function ClosureInstance:inheritedMethod()
+  --   self:superInheritedMethod()
+  --   -- extend method...
+  -- end
 
-  --
-  -- Public functions
-  --
-
-  self.publicFn = function()
-    print("I am not private!")
-  end
-
-
-
-  --
-  -- Expose closure API
-  --
-
-  return self
-
-end
-
-
-
---
--- Expose closure
---
-
-return C
+return ClosureInstance end } return M
