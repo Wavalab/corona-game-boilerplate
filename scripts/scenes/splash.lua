@@ -22,8 +22,8 @@ function scene:show(event)
   local phase = event.phase
   if (phase == "will") then
     -- Position splash screen
-    splash.x = G.xMiddle
-    splash.y = G.yMiddle
+    splash.x = G.xMid
+    splash.y = G.yMid
   elseif (phase == "did") then
     -- Go to game scene after 3s
     timer.performWithDelay(3000, function()
