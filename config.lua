@@ -1,7 +1,3 @@
---
--- More: https://docs.coronalabs.com/guide/basics/configSettings
---
-
 application = {
 	content = {
 		width = 800,

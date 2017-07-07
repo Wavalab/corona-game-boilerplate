@@ -1,16 +1,11 @@
-local M = { new = function()
+return { new = function(params)
 
   -- Construct and initialize instance
-  local ClosureInstance = {} -- feel free to rename to something more elegant
-
-  -- To extend a display object
-  -- local ClosureInstance = display.newCircle(0, 0, 0)
-
-  -- To extend a custom object
-  -- local ClosureInstance = require("parent-class-module").new()
+  local Inst = display.newCircle(0, 0, 0) or {}
+  -- local Inst = require("parent-class-module").new() -- To extend a custom object
 
   -- Public properties
-  ClosureInstance.publicVariable = nil
+  Inst.publicVariable = nil
 
   -- Private variables
   local privateVariable
@@ -19,16 +14,16 @@ local M = { new = function()
   local function privateFunction() end
 
   -- Public methods with access to `self` reference
-  function ClosureInstance:publicFunction() end
+  function Inst:publicFunction() end
 
-  -- Override inherited methods
-  -- function ClosureInstance:inheritedMethod() end
+  -- Overriding inherited methods
+  -- function Inst:inheritedMethod() end
 
-  -- Call super class methods
-  -- ClosureInstance.superInheritedMethod = ClosureInstance.inheritedMethod
-  -- function ClosureInstance:inheritedMethod()
+  -- Calling super class methods
+  -- Inst.superInheritedMethod = Inst.inheritedMethod
+  -- function Inst:inheritedMethod()
   --   self:superInheritedMethod()
   --   -- extend method...
   -- end
 
-return ClosureInstance end } return M
+return Inst end }

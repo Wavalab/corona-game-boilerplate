@@ -1,20 +1,9 @@
--- load dependencies here
 local M = {}
 
+local privateVariable
 
+local privateFunction = function() end
 
--- Private
-local foo = function()
-  return "foobar!"
-end
-
-
-
--- Public
-M.bar = function()
-  print("I am public " .. foo())
-end
-
-
+M.publicFunction = function() end
 
 return M

@@ -1,56 +1,57 @@
 local G = {}
 
+-- NICE GLOBAL VARIABLES
+---------------------------------------------------------------------
+G.platform = system.getInfo("platform") -- android/ios/macos/tvos/win32/winphone
 
+-- Virtual width/height (letterbox area 780 x 1200)
+G.vw = display.contentWidth
+G.vh = display.contentHeight
 
---
--- Convenient Globals
---
+-- Screen width/height (letterbox area + black bars)
+G.sw = display.actualContentWidth
+G.sh = display.actualContentHeight
 
--- Device platform: "android", "ios", "macos", "tvos", "win32", or "winphone"
-G.platform = system.getInfo("platform")
-
--- Width/Height of the "fake" letterbox area (800 x 1200)
-G.fW = display.contentWidth
-G.fH  = display.contentHeight
-
--- Full Width/Height of the "real" screen: letterbox area + the black bars
-G.rW = display.actualContentWidth
-G.rH  = display.actualContentHeight
-
--- positioning coordinates
-G.xMid = display.contentCenterX
-G.yMid = display.contentCenterY
-G.lEdge = (G.rW - G.fW) * -.5
-G.rEdge = G.fW - G.lEdge
-G.tEdge = (G.rH - G.fH) * -.5
-G.bEdge = G.fH - G.tEdge
+G.xm = display.contentCenterX
+G.ym = display.contentCenterY
+G.l = (G.sw - G.vw) * -.5 -- Coordinate for left edge
+G.r = (G.vw - G.l)        -- ... right edge
+G.t = (G.sh - G.vh) * -.5 -- ... top edge
+G.b = (G.vh - G.t)        -- ... bottom edge
 
 
 
---
--- Global Settings
---
+-- HELPER FUNCTIONS
+---------------------------------------------------------------------
+G.dist = function(x1, y1, x2, y2)
+  local dx, dy = x2 - x1, y2 - y1
+  return math.sqrt(dx*dx + dy*dy)
+end
 
+G.sqdist = function(x1, y1, x2, y2)
+  local dx, dy = x2 - x1, y2 - y1
+  return dx*dx + dy*dy -- faster for comparisons only
+end
+
+
+
+-- GLOBAL SETTINGS
+---------------------------------------------------------------------
 G.settings = {}
--- G.settings.soundOn = true
+G.settings.soundOn = true
 
 
 
---
--- Global Data
---
-
+-- GLOBAL DATA
+---------------------------------------------------------------------
 G.data = {}
--- G.data.highscore = 0
+G.data.highscore = 0
 
 
 
---
--- Global Sounds (not unloaded at scene exit)
---
-G.sounds = {}
--- G.sounds.explosion = audio.loadSound("sounds/sfx/explosion.wav")
-
-
+-- GLOBAL SOUNDS
+---------------------------------------------------------------------
+G.sounds = {} -- not unloaded at scene exit
+-- G.sounds.sfx1 = audio.loadSound("sounds/sfx1.wav")
 
 return G

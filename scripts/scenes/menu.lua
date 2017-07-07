@@ -1,101 +1,60 @@
---
--- Scene Template
---
-
+-- Stuff here runs only once
+-- Setup dependencies, vars, constants, etc
 local composer = require("composer")
-local G = require("scripts.modules.g")
--- require statements here
+local scene = composer.newScene()
 
 
 
---
--- Variables, init, etc; Executes ONCE
---
-
-local scene = composer.newScene() -- create the scene
--- ...
-
-
-
---
--- Runs at EVERY scene creation before visible
---
-
+-- Runs at every scene creation before visible
 function scene:create(event)
   local sceneGroup = self.view
-
+  -- pause physics
   -- define groups
-  -- pause physics if started
   -- define display objects
   -- insert objects/groups into scene view
   -- load scene specific audio
   -- touch handlers
-  -- ...
 end
 
 
 
---
 -- Runs before & after screen shows
---
-
 function scene:show(event)
   local sceneGroup, phase = self.view, event.phase
-
   if (phase == "will") then
     -- position elements
-    -- ...
-
   elseif (phase == "did") then
     -- timers, transitions, animations
     -- start physics
     -- play scene specific audio
-    -- Runtime event listeners (enterFrame, etc)
-    -- ...
+    -- runtime event listeners
   end
 end
 
 
 
---
 -- Runs before & after screen hides
---
-
 function scene:hide(event)
   local sceneGroup, phase = self.view, event.phase
-
   if (phase == "will") then
     -- remove native UI objects
-    -- remove Runtime listeners (enterFrame, etc)
+    -- remove runtime listeners
     -- pause physics
-    -- stop audio
-    -- stop timers
-    -- ...
-
+    -- stop audio, timers, transitions, animations
   elseif (phase == "did") then
-    -- optional: force screen removal
-    -- ...
+    -- composer.removeScene("scene1") -- force screen removal?
   end
 end
 
 
 
---
 -- Runs directly before scene removal
---
-
 function scene:destroy(event)
   local sceneGroup = self.view
-
   -- destroy scene specific audio
-  -- ...
 end
 
 
-
---
--- End
---
 
 scene:addEventListener("create", scene)
 scene:addEventListener("show", scene)
